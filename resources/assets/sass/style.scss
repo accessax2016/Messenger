@@ -1,0 +1,157 @@
+body {
+    background-color: #FFFFFF;
+}
+
+.container-fluid>.row>.col-lg-3 {
+    padding: 0px;
+}
+
+.container-fluid>.row>.col-lg-9 {
+    padding: 0px;
+}
+
+.room-section {
+    border-right: 1px solid #DEDCDC;
+}
+
+.room-section-title {
+    border-bottom: 1px solid #DEDCDC;
+    height: 50px;
+    padding: 10px;
+}
+
+.room-section-search {
+    padding: 10px;
+}
+
+.room-section-content {
+    /*padding: 10px;*/
+}
+
+.room-list {
+    overflow-y: scroll;
+    height: 82vh;
+    border-bottom: 1px solid #DEDCDC;
+}
+
+.room-image {
+    float: left
+}
+
+.room-name {
+    margin-left: 80px;
+}
+
+.list-group-item {
+    border: none;
+}
+
+.name {
+    font-size: 18px;
+}
+
+.glyphicon-user {
+    color: #50E34C;
+}
+
+.information-section {
+    border-left: 1px solid #DEDCDC;
+}
+
+.room-information {
+    padding: 10px;
+    height: 80px;
+    border-bottom: 1px solid #DEDCDC;
+}
+
+.room-participant {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #DEDCDC;
+}
+
+.participant-title {
+    font-size: 18px;
+    padding: 10px;
+}
+
+.participant-image {
+    float: left
+}
+
+.participant-name {
+    margin-left: 50px;
+}
+
+.username {
+    font-size: 18px;
+    margin-bottom: 5px;
+    padding-top: 5px;
+}
+
+.participant-list {
+    overflow-y: scroll;
+    height: 50vh;
+}
+
+.room-action {
+    padding: 10px;
+    height: 16vh;
+    border-bottom: 1px solid #DEDCDC;
+}
+
+.room-content>.col-lg-8 {
+    padding: 0px;
+}
+
+.room-content>.col-lg-4 {
+    padding: 0px;
+}
+
+.title {
+    border-bottom: 1px solid #DEDCDC;
+    height: 50px;
+    padding: 10px;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #E8E6E6;
+}
+
+.message-active {
+    background-color: #358BFF;
+    color: white;
+}
+
+.clearfix {
+    overflow: auto;
+    padding: 5px 0px;
+}
+
+.message-avatar {
+    margin: 5px;
+}
+
+.message-list {
+    overflow-y: scroll;
+    height: 77vh;
+    border-bottom: 1px solid #DEDCDC;
+}
+
+.form-message {
+    padding: 10px;
+}
+
+.form-message textarea {
+    resize: none;
+}
+
+.router-link-active {
+    background: #D9D9D9;
+}
+
+.add-room:hover {
+    color: #5D9EFF;
+    cursor: pointer;
+}
