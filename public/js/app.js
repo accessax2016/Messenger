@@ -11970,6 +11970,10 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   store: __WEBPACK_IMPORTED_MODULE_3__store_index__["a" /* default */]
 }).$mount('#app');
 
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.config.devtools = false;
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.config.debug = false;
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.config.silent = true;
+
 /***/ }),
 /* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -50803,8 +50807,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this2 = this;
 
-        this.$store.dispatch('user/setCurrentUser');
         this.$store.dispatch('user/countUsersInChannels');
+        this.$store.dispatch('user/setCurrentUser');
         this.$store.dispatch('room/fetchRooms');
 
         this.$store.dispatch('message/fetchMessagesOfRoom', parseInt(this.$route.params.id));
@@ -51110,102 +51114,108 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "modal fade",
-      attrs: {
-        id: "myModal",
-        tabindex: "-1",
-        role: "dialog",
-        "aria-labelledby": "myModalLabel"
-      }
-    },
-    [
-      _c("div", { staticClass: "modal-dialog", attrs: { role: "document" } }, [
-        _c("div", { staticClass: "modal-content" }, [
-          _vm._m(0),
-          _vm._v(" "),
+  return _vm.currentUser
+    ? _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "myModal",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "myModalLabel"
+          }
+        },
+        [
           _c(
             "div",
-            {
-              staticClass: "modal-body",
-              staticStyle: { "text-align": "left" }
-            },
+            { staticClass: "modal-dialog", attrs: { role: "document" } },
             [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-lg-4" }, [
-                  _c("img", {
-                    staticClass: "img-circle",
-                    attrs: {
-                      src: _vm.room.image,
-                      alt: "Hình phòng",
-                      width: "150",
-                      height: "150"
-                    }
-                  })
-                ]),
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(0),
                 _vm._v(" "),
-                _c("div", { staticClass: "col-lg-8" }, [
-                  _c("label", [_vm._v("Tên phòng (6 - 32 ký tự):")]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.room.name,
-                        expression: "room.name"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      name: "",
-                      placeholder: "Nhập tên phòng",
-                      required: ""
+                _c(
+                  "div",
+                  {
+                    staticClass: "modal-body",
+                    staticStyle: { "text-align": "left" }
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-lg-4" }, [
+                        _c("img", {
+                          staticClass: "img-circle",
+                          attrs: {
+                            src: _vm.room.image,
+                            alt: "Hình phòng",
+                            width: "150",
+                            height: "150"
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-8" }, [
+                        _c("label", [_vm._v("Tên phòng (6 - 32 ký tự):")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.room.name,
+                              expression: "room.name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            name: "",
+                            placeholder: "Nhập tên phòng",
+                            required: ""
+                          },
+                          domProps: { value: _vm.room.name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.room, "name", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { type: "file", name: "image" },
+                          on: { change: _vm.changeImage }
+                        })
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "modal",
+                        disabled: _vm.canClick
+                      },
+                      on: { click: _vm.postRoom }
                     },
-                    domProps: { value: _vm.room.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.room, "name", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("input", {
-                    attrs: { type: "file", name: "image" },
-                    on: { change: _vm.changeImage }
-                  })
+                    [_vm._v("TẠO")]
+                  )
                 ])
               ])
             ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-footer" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary",
-                attrs: {
-                  type: "button",
-                  "data-dismiss": "modal",
-                  disabled: _vm.canClick
-                },
-                on: { click: _vm.postRoom }
-              },
-              [_vm._v("TẠO")]
-            )
-          ])
-        ])
-      ])
-    ]
-  )
+          )
+        ]
+      )
+    : _vm._e()
 }
 var staticRenderFns = [
   function() {
@@ -51768,38 +51778,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-message" }, [
-    _c("textarea", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.message.content,
-          expression: "message.content"
-        }
-      ],
-      staticClass: "form-control",
-      attrs: { rows: "3", placeholder: "Nhập tin nhắn ..." },
-      domProps: { value: _vm.message.content },
-      on: {
-        keyup: function($event) {
-          if (
-            !("button" in $event) &&
-            _vm._k($event.keyCode, "enter", 13, $event.key)
-          ) {
-            return null
+  return _vm.currentUser
+    ? _c("div", { staticClass: "form-message" }, [
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.message.content,
+              expression: "message.content"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { rows: "3", placeholder: "Nhập tin nhắn ..." },
+          domProps: { value: _vm.message.content },
+          on: {
+            keyup: function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "enter", 13, $event.key)
+              ) {
+                return null
+              }
+              _vm.postMessage($event)
+            },
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.message, "content", $event.target.value)
+            }
           }
-          _vm.postMessage($event)
-        },
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.$set(_vm.message, "content", $event.target.value)
-        }
-      }
-    })
-  ])
+        })
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -52112,8 +52124,8 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 		room: __WEBPACK_IMPORTED_MODULE_2__modules_room__["a" /* default */],
 		user: __WEBPACK_IMPORTED_MODULE_3__modules_user__["a" /* default */],
 		message: __WEBPACK_IMPORTED_MODULE_4__modules_message__["a" /* default */]
-	},
-	strict: true
+	}
+	// strict: true,
 }));
 
 /***/ }),
@@ -53167,8 +53179,11 @@ var state = {
 	},
 	getCountUsersOnline: function getCountUsersOnline(state) {
 		return function (room_id) {
-			if (!_.isUndefined(state.countUsersInChannels.channels['presence-room.' + room_id])) {
-				return state.countUsersInChannels.channels['presence-room.' + room_id].user_count;
+			if (!_.isUndefined(state.countUsersInChannels.channels)) {
+				if (!_.isUndefined(state.countUsersInChannels.channels['presence-room.' + room_id])) {
+					return state.countUsersInChannels.channels['presence-room.' + room_id].user_count;
+				}
+				return 0;
 			}
 			return 0;
 		};

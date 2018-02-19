@@ -47,8 +47,8 @@
             }
         },
         created() {
-            this.$store.dispatch('user/setCurrentUser');
             this.$store.dispatch('user/countUsersInChannels');
+            this.$store.dispatch('user/setCurrentUser');
             this.$store.dispatch('room/fetchRooms');
 
             this.$store.dispatch('message/fetchMessagesOfRoom', parseInt(this.$route.params.id));

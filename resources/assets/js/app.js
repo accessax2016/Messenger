@@ -34,3 +34,7 @@ const app = new Vue({
     router,
     store,
 }).$mount('#app');
+
+Vue.config.devtools = false
+Vue.config.debug = false
+Vue.config.silent = true

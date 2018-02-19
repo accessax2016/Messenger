@@ -17,8 +17,11 @@ const getters = {
 	},
 	getCountUsersOnline: state => {
 		return room_id => {
-			if (!_.isUndefined(state.countUsersInChannels.channels['presence-room.' + room_id])) {
-				return state.countUsersInChannels.channels['presence-room.' + room_id].user_count;
+			if (!(_.isUndefined(state.countUsersInChannels.channels))) {
+				if (!(_.isUndefined(state.countUsersInChannels.channels['presence-room.' + room_id]))) {
+					return state.countUsersInChannels.channels['presence-room.' + room_id].user_count;
+				}
+				return 0;
 			}
 			return 0;
 		}

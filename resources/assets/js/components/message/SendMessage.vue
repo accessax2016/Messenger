@@ -1,5 +1,5 @@
 <template>
-    <div class="form-message">
+    <div v-if="currentUser" class="form-message">
         <textarea class="form-control" rows="3" placeholder="Nhập tin nhắn ..."
         v-model="message.content"
         @keyup.enter="postMessage" ></textarea>

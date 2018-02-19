@@ -12,5 +12,5 @@ export default new Vuex.Store ({
 		user,
 		message
 	},
-	strict: true,
+	// strict: true,
 })
